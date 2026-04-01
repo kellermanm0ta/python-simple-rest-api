@@ -59,11 +59,13 @@ class API():
     def get(self, path):
         def wrapper(fn):
             self.routing["GET"][path] = fn
+            return fn
         return wrapper
 
     def post(self, path):
         def wrapper(fn):
             self.routing["POST"][path] = fn
+            return fn
         return wrapper
 
     def __call__(self, request, client_address, ref_request):
